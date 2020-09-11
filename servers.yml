@@ -137,6 +137,6 @@ Resources:
 Outputs:
   URLofLoadBalancer:
     Description: The URL of the Load Balancer to access the web application
-    Value: !GetAtt WebAppLB.DNSName
+    Value: !Join ["", ["http://", !GetAtt WebAppLB.DNSName]]
     Export:
       Name: !Sub ${EnvironmentName}-LB-URL
