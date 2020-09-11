@@ -44,10 +44,6 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-          CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 0
@@ -70,7 +66,6 @@ Resources:
           apt install unzip -y
           unzip udacity.zip
       ImageId: ami-06b263d6ceff0b3dd
-      KeyName: UdacityCloudDevOpsProj2PrivateWebServer
       SecurityGroups:
         - Ref: WebServerSecGroup
       InstanceType: t3.medium
