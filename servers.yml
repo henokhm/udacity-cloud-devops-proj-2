@@ -85,8 +85,8 @@ Resources:
         - Fn::ImportValue: !Sub "${EnvironmentName}-PRIV-NETS"
       LaunchConfigurationName:
         Ref: WebAppLaunchConfig
-      MinSize: "1"
-      MaxSize: "1"
+      MinSize: "4"
+      MaxSize: "6"
       TargetGroupARNs:
         - Ref: WebAppTargetGroup
   WebAppLB:
@@ -133,6 +133,10 @@ Resources:
       VpcId:
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
-# Outputs:
 
-# TODO: add URL of the load balancer to output
+Outputs:
+  URLofLoadBalancer:
+    Description: The URL of the Load Balancer to access the web application
+    Value: !GetAtt WebAppLB.DNSName
+    Export:
+      Name: !Sub ${EnvironmentName}-LB-URL
