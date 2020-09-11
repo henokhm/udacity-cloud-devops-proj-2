@@ -4,14 +4,6 @@
 
 ### Project Title - Deploy a high-availability web app using CloudFormation
 
-This folder provides the starter code for the "ND9991 - C2- Infrastructure as Code - Deploy a high-availability web app using CloudFormation" project. This folder contains the following files:
+In this project, we deploy web servers for a highly available web app using CloudFormation. The scripts create and deploy the networking infrastructure, servers and application in a completely automated manner.
 
-#### final-project-starter.yml
-
-Students have to write the CloudFormation code using this YAML template for building the cloud infrastructure, as required for the project.
-
-#### server-parameters.json
-
-Students may use a JSON file for increasing the generic nature of the YAML code. For example, the JSON file contains a "ParameterKey" as "EnvironmentName" and "ParameterValue" as "UdacityProject".
-
-In YAML code, the `${EnvironmentName}` would be substituted with `UdacityProject` accordingly.
+The deployment includes a Virtual Private Cloud, two public and two private Subnets in two different AZs, NAT Gateways, a Load Balancer and an Auto Scaling Group. The Auto Scaling Group is configured to run 4 to 6 servers that serve the web application.
