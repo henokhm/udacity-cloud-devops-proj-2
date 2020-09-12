@@ -15,6 +15,12 @@ Parameters:
   EnvironmentName:
     Description: An environment name that will be prefixed to resource names
     Type: String
+  MinNumofServers:
+    Description: The minimum number of web application servers to run
+    Type: String
+  MaxNumofServers:
+    Description: The maximum number of web application servers to run
+    Type: String
 
 Resources:
   LBSecGroup:
@@ -80,8 +86,8 @@ Resources:
         - Fn::ImportValue: !Sub "${EnvironmentName}-PRIV-NETS"
       LaunchConfigurationName:
         Ref: WebAppLaunchConfig
-      MinSize: "4"
-      MaxSize: "6"
+      MinSize: !Ref MinNumofServers
+      MaxSize: !Ref MaxNumofServers
       TargetGroupARNs:
         - Ref: WebAppTargetGroup
   WebAppLB:
